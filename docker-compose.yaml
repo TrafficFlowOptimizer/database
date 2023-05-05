@@ -2,6 +2,7 @@ services:
 
   postgres:
     image: postgres:15-alpine
+    container_name: postgres
     ports:
       - "5432:5432"
     restart: always
@@ -12,6 +13,7 @@ services:
 
   mongodb:
     image: mongo:6.0
+    container_name: mongodb
     ports:
       - "27017:27017"
     restart: always
