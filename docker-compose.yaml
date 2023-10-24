@@ -2,16 +2,20 @@ services:
   mongodb:
     image: mongo:6.0
     container_name: mongodb
-    # expose:
-    #   - 27017
+    networks:
+      - tfo-net
     ports:
       - 27017:27017
     restart: always
+    volumes:
+      - tfo-db:/mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo
-    volumes:
-      - tfo-db:/mongo
+
+networks:
+  tfo-net:
+    name: tfo-net
 
 volumes:
   tfo-db:
